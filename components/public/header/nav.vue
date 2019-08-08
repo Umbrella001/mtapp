@@ -24,6 +24,49 @@
             </li>
             <li class="list site">
                 <nuxt-link to="/site">网站导航</nuxt-link>
+                <div class="subContainer">
+                    <dl class="hotel">
+                        <dt>酒店旅游</dt>
+                        <dd>国际机票</dd>
+                        <dd>国际机票</dd>
+                        <dd>国际机票</dd>
+                        <dd>国际机票</dd>
+                        <dd>国际机票</dd>
+                        <dd>国际机票</dd>
+                        <dd>国际机票</dd>
+                        <dd>国际机票</dd>
+                        <dd>国际机票</dd>
+                    </dl>
+                    <dl class="food">
+                        <dt>吃美食</dt>
+                        <dd>烤鱼</dd>
+                        <dd>烤鱼</dd>
+                        <dd>烤鱼</dd>
+                        <dd>烤鱼</dd>
+                        <dd>烤鱼</dd>
+                        <dd>烤鱼</dd>
+                        <dd>烤鱼</dd>
+                    </dl>
+                    <dl class="movie">
+                        <dt>看电影</dt>
+                        <dd>热映电影</dd>
+                        <dd>热映电影</dd>
+                        <dd>热映电影</dd>
+                        <dd>热映电影</dd>
+                        <dd>热映电影</dd>
+                        <dd>热映电影</dd>
+                        <dd>热映电影</dd>
+                    </dl>
+                    <dl class="app">
+                        <dt>手机应用</dt>
+                        <dd>
+                            <a href="#">
+                                <img class="appicon" src="//s0.meituan.net/bs/fe-web-meituan/2d53095/img/appicons/meituan.png" 
+                                title="美团app" alt="美团app">
+                            </a>
+                        </dd>
+                    </dl>
+                </div>
             </li>
         </ul>
     </div>
