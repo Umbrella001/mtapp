@@ -1,5 +1,6 @@
 <template>
     <div class="search-panel">
+        <!-- 项目searchbar搜索栏部分 -->
         <el-row class="m-header-searchbar">
             <el-col
              :span="3"
@@ -19,7 +20,7 @@
                       @blur="blur"
                       @input="input"
                       >
-                        <button class="el-button el-button--primary"><i class="el-icon-search"/></button>
+                    </el-input>
                         <dl
                           v-if="isHotPlace"
                           class="hotPlace"
@@ -37,7 +38,7 @@
                                 {{item}}
                             </dd>
                         </dl>
-                    </el-input>
+                    <button class="el-button el-button--primary"><i class="el-icon-search"/></button>
                 </div>
                 <p class="suggest">
                     <a href="#">故宫博物院</a>
@@ -96,10 +97,13 @@ export default {
     },
     methods:{
         focus:function(){
-            this.isFocus = true
+            this.isFocus = true;
         },
         blur:function(){
-            this.isFocus = false
+            let self=this;
+            setTimeout(function(){
+                self.isFocus=false;
+            },200)
         },
         input:function(){
             console.log("input")
@@ -107,13 +111,10 @@ export default {
     },
     computed:{
         isHotPlace:function(){
-            return this.isFocus && !this.search
+            return this.isFocus && !this.search;
         },
         isSearchList:function(){
-            let self = this;
-            setTimeout(function(){
-                self.isFocus = false
-            },200)
+           return this.isFocus && this.search;
         }
     }
 }

@@ -1,4 +1,5 @@
 <template>
+<!-- topbar用户部分 -->
     <div class="m-user">
         <template v-if="user">
             欢迎您,<span class="username">{{ user }}</span>
