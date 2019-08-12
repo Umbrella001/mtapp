@@ -23,11 +23,13 @@
               ref="ruleForm" 
               label-width="100px" 
               class="demo-ruleForm">
+                <!-- 昵称 -->
                 <el-form-item 
                   label="昵称" 
                   prop="name">
                     <el-input v-model="ruleForm.name"></el-input>
                 </el-form-item>
+                <!-- 邮箱 -->
                 <el-form-item 
                   label="邮箱" 
                   prop="email">
@@ -38,13 +40,15 @@
                     @click="sendMsg">发送验证码</el-button>
                     <span class="status">{{ statusMsg }}</span>
                 </el-form-item>
+                <!-- 验证码 -->
                 <el-form-item 
-                  label="邮箱" 
+                  label="验证码" 
                   prop="code">
                   <el-input
                     v-model="ruleForm.code" 
                     maxlength="4"></el-input>
                 </el-form-item>
+                <!-- 密码 -->
                 <el-form-item 
                   label="密码" 
                   prop="pwd">
@@ -52,6 +56,7 @@
                     v-model="ruleForm.pwd" 
                     type="password"></el-input>
                 </el-form-item>
+                <!-- 确认密码 -->
                 <el-form-item 
                   label="确认密码" 
                   prop="cpwd">
@@ -59,12 +64,14 @@
                     v-model="ruleForm.cpwd" 
                     type="password"></el-input>
                 </el-form-item>
+                <!-- 协议按钮 -->
                 <el-form-item>
                     <el-button 
                       type="primary" 
                       @click="register">同意以下协议并注册</el-button>
                     <div class="error">{{ error }}</div>
                 </el-form-item>
+                <!-- 协议 -->
                 <el-form-item>
                     <a 
                       href="http://www.meituan.com/about/terms" 
@@ -88,6 +95,41 @@ export default {
                code:'',
                pwd:'',
                cpwd:''
+            },
+            rules:{
+                name:[{
+                    require:true,
+                    type:'string',
+                    message:'请输入昵称',
+                    trigger:'blur'
+                }],
+                email:[{
+                    require:true,
+                    type:'email',
+                    message:'请输入邮箱',
+                    trigger:'blur'
+                }],
+                pwd:[{
+                    require:true,
+                    message:'创建密码',
+                    trigger:'blur'
+                }],
+                cpwd:[{
+                    require:true,
+                    message:'确认密码',
+                    trigger:'blur'
+                },{
+                    validator:(rule,value,callback)=>{
+                        if(value===''){
+                            callback(new Error('请再次输入密码'));
+                        }else if(value!==this.ruleForm.pwd){
+                            callback(new Error('两次输入的密码不一致'));
+                        }else{
+                            callback();
+                        }
+                    },
+                    trigger:'blur'
+                }]
             }
         }
     },
