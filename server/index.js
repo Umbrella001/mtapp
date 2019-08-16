@@ -9,7 +9,7 @@ import Redis from 'koa-redis'
 import json from 'koa-json'
 import dbConfig from './dbs/config'
 import passport from './interface/utils/passport'
-import user from './interface/users'
+import users from './interface/users'
 
 const app = new Koa()
 
