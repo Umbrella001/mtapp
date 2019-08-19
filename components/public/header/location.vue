@@ -1,7 +1,7 @@
 <template>
 <!-- topBar定位展示部分 -->
     <div class='m-geo'>
-        <i class="el-icon-location">北京市</i>
+        <i class="el-icon-location"/>{{$store.state.geo.position.city}}
         <nuxt-link
         class="changeCity"
         to="/changeCity"

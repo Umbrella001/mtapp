@@ -177,16 +177,14 @@ export default {
      */
     register: function() {
       let self = this;
-      this.$refs["ruleForm"].validate(valid => {
+      this.$refs["ruleForm"].validate( (valid) => {
         if (valid) {
-          self.$axios
-            .post("/users/signup", {
+          self.$axios.post("/users/signup", {
               username: window.encodeURIComponent(self.ruleForm.name),
               password: CryptoJS.MD5(self.ruleForm.pwd).toString(),
               email: self.ruleForm.email,
               code: self.ruleForm.code
-            })
-            .then(({ status, data }) => {
+            }).then(({ status, data }) => {
               if (status === 200) {
                 if (data && data.code === 0) {
                   location.href = "/login";
