@@ -6,7 +6,7 @@
  * --koa-router路由 || 引入mongoose配置的模型表 || 引入封装的axios数据通讯
  * --定义路由主体的前缀
  * --获取redis客户端
- * --定义注册接口signup || 登录接口signin || 验证码接口verify || 登出接口exit || 获取信息接口getUser
+ * --定位服务的接口getPosition || 全国省份province || 请求页面菜单中全部分类的接口menu || 登出接口exit || 获取信息接口getUser
  * --导出路由router  
  */
 import Router from 'koa-router'
@@ -40,7 +40,7 @@ router.get('/getPosition', async (ctx) => {
     }
 })
 
-//
+// 获取线上所有省份接口
 router.get('/province', async (ctx) => {
     // let province = await Province.find()
     // ctx.body = {

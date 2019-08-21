@@ -12,7 +12,7 @@ import axios from 'axios'
 
 const instance = axios.create({
     baseURL: `http://${process.env.HOST||'loclhost'}:${process.env.PORT||3000}`,
-    timeout: 1000,
+    timeout: 5000,
     headers:{}
 })
 
