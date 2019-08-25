@@ -60,7 +60,7 @@ export default {
         city: self.$store.state.geo.position.city
       }
     });
-    if (status === 200 && count > 0) {
+    if (status === 200 && count > 0) {    
       let r = pois
         .filter(item => item.photos.length)
         .map(item => {
