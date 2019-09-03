@@ -4,13 +4,13 @@
     <el-select v-model="pvalue" placeholder="省份">
       <el-option
         v-for="item in province"
-        :key="item.vaule"
+        :key="item.value"
         :label="item.label"
-        :value="item.place"
+        :value="item.value"
       />
     </el-select>
     <el-select v-model="cvalue" :disabled="!city.length" placeholder="城市">
-      <el-option v-for="item in city" :key="item.vaule" :label="item.label" :value="item.place" />
+      <el-option v-for="item in city" :key="item.value" :label="item.label" :value="item.value" />
     </el-select>
     <span class="name">&nbsp;&nbsp;&nbsp;&nbsp;中文搜索：</span>
     <el-autocomplete
@@ -23,6 +23,7 @@
 </template>
 <script>
 import _ from "lodash";
+import pyjs from 'js-pinyin'
 export default {
   data() {
     return {
@@ -52,7 +53,6 @@ export default {
   watch: {
     pvalue: async function(newPvalue) {
       let self = this;
-      console.log("333", newPvalue);
       let {
         status,
         data: { city }
@@ -71,8 +71,8 @@ export default {
   methods: {
     querySearchAsync: _.debounce(async function(query, callback) {
       let self = this;
-      if (self.city.length) {
-        callback(self.cities.filter(item => item.value.indexOf(query) > -1));
+      if (self.cities.length) {
+        callback(self.cities.filter(item => item.value.indexOf(query) > -1 || item.charValue.indexOf(query) > -1));
       } else {
         let {
           status,
@@ -80,11 +80,13 @@ export default {
         } = await self.$axios.get("/geo/city");
         if (status === 200) {
           self.cities = city.map(item => {
+            
             return {
-              value: item.name
+              value: item.name,
+              charValue: pyjs.getFullChars(item.name).toLocaleLowerCase()
             };
           });
-          callback(self.cities.filter(item => item.value.indexOf(query) > -1));
+          callback(self.cities.filter(item => item.value.indexOf(query) > -1 || item.charValue.indexOf(query) > -1));
         } else {
           callback([]);
         }
