@@ -59,7 +59,6 @@ export default {
                     title: key.toUpperCase(),
                     city: value
                 })
-                console.log('xx',blocks);
             }
             blocks.sort((x,y) => x.title.charCodeAt(0) - y.title.charCodeAt(0));
             self.block = blocks;
