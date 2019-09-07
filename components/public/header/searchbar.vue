@@ -16,17 +16,21 @@
           ></el-input>
           <dl v-if="isHotPlace" class="hotPlace">
             <dt>热门搜索</dt>
-            <dd v-for="(item,index) in $store.state.home.hotPlace" :key="index">{{item.name}}</dd>
+            <dd v-for="(item,index) in $store.state.home.hotPlace" :key="index">
+              <a :href="'/products?keyword=' + encodeURIComponent(item.name)">{{item.name}}</a>
+            </dd>
           </dl>
           <dl v-if="isSearchList" class="searchList">
-            <dd v-for="(item,index) in searchList" :key="index">{{item.name}}</dd>
+            <dd v-for="(item,index) in searchList" :key="index">
+              <a :href="'/products?keyword=' + encodeURIComponent(item.name)">{{item.name}}</a>
+            </dd>
           </dl>
           <button class="el-button el-button--primary">
             <i class="el-icon-search" />
           </button>
         </div>
         <p class="suggest">
-          <a href="#" v-for="(item,index) in $store.state.home.hotPlace" :key="index">{{item.name}}</a>
+          <a :href="'/products?keyword=' + encodeURIComponent(item.name)" v-for="(item,index) in $store.state.home.hotPlace" :key="index">{{item.name}}</a>
         </p>
         <ul class="nav">
           <li>
